@@ -5,7 +5,7 @@ from django.conf import settings
 from apps.newsletter.models import Subscriber
 
 @shared_task
-def send_mail_task():
+def send_message_newsletter():
     if Subscriber.objects.exists():
         subscribers = Subscriber.objects.all()
         subject = 'Good morning!'

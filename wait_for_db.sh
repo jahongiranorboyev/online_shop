@@ -10,4 +10,3 @@ while ! nc -z $HOST $PORT; do
 done
 
 echo "Database is up!"
-exec "$@"

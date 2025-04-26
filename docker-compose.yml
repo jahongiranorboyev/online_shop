@@ -9,8 +9,10 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     env_file:
       - .env
     networks:
@@ -30,6 +32,11 @@ services:
     networks:
       - mynetwork
     restart: always
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   redis:
     image: redis:7
@@ -45,8 +52,10 @@ services:
     volumes:
       - .:/code
     depends_on:
-      - redis
-      - db
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     env_file:
       - .env
     networks:
@@ -59,8 +68,10 @@ services:
     volumes:
       - .:/code
     depends_on:
-      - redis
-      - db
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     env_file:
       - .env
     networks:

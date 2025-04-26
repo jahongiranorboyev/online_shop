@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /code
 
-# netcat to'g'ri o'rnatilishi uchun
+# netcat o'rnatiladi
 RUN apt-get update && apt-get install -y netcat-openbsd && apt-get clean
 
 COPY requirements.txt .
