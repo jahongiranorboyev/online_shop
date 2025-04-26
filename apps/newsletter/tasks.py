@@ -14,4 +14,4 @@ def send_mail_task():
         recipient_list = [subscriber.email for subscriber in subscribers]
         send_mail(subject, message, from_email, recipient_list)
     else:
-        print("No subscribers to send email to.").0
+        print("No subscribers to send email to.")

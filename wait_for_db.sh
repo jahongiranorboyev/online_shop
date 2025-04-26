@@ -1,7 +1,7 @@
 #!/bin/sh
 
-HOST=${POSTGRES_HOST}
-PORT=${POSTGRES_PORT}
+HOST=${POSTGRES_HOST:-db}
+PORT=${POSTGRES_PORT:-5432}
 
 echo "Waiting for database at $HOST:$PORT..."
 
