@@ -79,17 +79,16 @@ def product_list(request: WSGIRequest) -> HttpResponse:
     cat_id = request.session.get('cat_id', None)
     queryset = Product.objects.order_by('-pk')
 
-    features = []
+    features = {}
     if cat_id:
         # Retrieve features related to the category
-        features = Feature.objects.filter(category_id=cat_id).prefetch_related('values')
+        features_queryset = Feature.objects.filter(category_id=cat_id).prefetch_related('values')
 
         # Retrieve feature values with product count
         feature_values = FeatureValue.objects.filter(
             feature__category_id=cat_id
         ).annotate(products_count=Count('product_features_values')).select_related('feature')
 
-        features = {}
         for feature_value in feature_values:
             item = {
                 'pk': str(feature_value.pk),
@@ -105,7 +104,7 @@ def product_list(request: WSGIRequest) -> HttpResponse:
             else:
                 features[feature_value.feature.pk]['values'].append(item)
 
-        features = list(features.values())
+        features = list(features.values())  # Convert the dictionary to a list of feature data
 
     # Search functionality for product titles
     if search_text:
@@ -156,7 +155,7 @@ def product_list(request: WSGIRequest) -> HttpResponse:
         'page': 'shop',
         'user_wishlist': user_wishlist,
         'user_cart': user_cart,
-        'features': features if cat_id else {},
+        'features': features if cat_id else {} ,
     }
 
     return render(request=request, template_name='shop.html', context=context)

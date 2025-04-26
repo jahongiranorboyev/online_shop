@@ -122,20 +122,6 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = 'login-page'
 LOGIN_REDIRECT_URL = 'home-page'
 
-CASHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": [
-            "redis://localhost/0",
-        ],
-    }
-}
 
-# newsletter_project / settings.py
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jahongiranorboyev8@gmail.com'
-EMAIL_HOST_PASSWORD = 'cnskelhvdtpntphd'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
