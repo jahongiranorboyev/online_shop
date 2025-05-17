@@ -49,7 +49,8 @@ class Product(models.Model):
     created_at = models.DateField(auto_now_add=True)
     added_at = models.DateField(auto_now=True)
     main_image = models.ImageField(upload_to='products/images/%Y/%m/%d/')
-
+    owner_phone_number = models.CharField(max_length=13, blank=True, null=True)
+    owner_telegram_username = models.CharField(max_length=255, blank=True, null=True)
     @property
     def features(self):
         """

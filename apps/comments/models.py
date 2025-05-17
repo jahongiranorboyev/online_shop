@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
+from decimal import Decimal
 
 
 class ProductComment(models.Model):
@@ -53,6 +54,8 @@ class ProductComment(models.Model):
     )
 
     def save(self, *args, **kwargs):
+        print('kkkkkkkkkkkkkkkkkkkkkk')
+        print(self.product.comments_count, '>>>>>>>>>>>>>>>>.')
         """
         Overrides the save method to automatically set the name and email
         from the user if the comment is posted by a registered user.
@@ -68,3 +71,7 @@ class ProductComment(models.Model):
             self.name = self.user.get_full_name()
             self.email = self.user.email
         super().save(*args, **kwargs)
+        self.product.comments_count = ProductComment.objects.filter(product=self.product).count()
+        aggregated = ProductComment.objects.filter(product=self.product).aggregate(avg=models.Avg('rating'))
+        self.product.avg_rating = Decimal(str(round(aggregated['avg'] or 0, 1)))
+        self.product.save()
