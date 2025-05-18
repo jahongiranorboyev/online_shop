@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-10 13:41+0500\n"
+"POT-Creation-Date: 2025-05-18 01:45+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,65 +20,49 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps/sellers/models.py:10
-msgid "Male"
-msgstr ""
-
-#: apps/sellers/models.py:11
-msgid "Female"
-msgstr ""
-
-#: apps/sellers/models.py:13
-msgid "rating"
-msgstr ""
-
-#: apps/sellers/models.py:15
-msgid "Gender"
-msgstr ""
-
-#: apps/sellers/models.py:33
-msgid "name"
-msgstr ""
-
-#: apps/sellers/models.py:34
-msgid "description"
-msgstr ""
-
-#: apps/sellers/models.py:35
-msgid "language"
-msgstr ""
-
 #: apps/users/admin.py:14
 msgid "Personal info"
 msgstr ""
 
-#: apps/users/admin.py:28
+#: apps/users/admin.py:31
 msgid "Permissions"
 msgstr ""
 
-#: apps/users/admin.py:39
+#: apps/users/admin.py:42
 msgid "Important dates"
 msgstr ""
 
 #: config/settings/translation.py:15
 msgid "Uzbek"
-msgstr ""
+msgstr "Узбекский"
 
 #: config/settings/translation.py:16
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: config/settings/translation.py:17
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
+
+#: templates/about.html:15
+msgid "About Us"
+msgstr "О HAC"
+
+#: templates/about.html:16
+msgid "Welcome to"
+msgstr "Добро пожаловать в"
+
+#: templates/about.html:27
+msgid "Read More"
+msgstr "Читать далее"
 
 #: templates/bases/basic.html:39 templates/bases/basic.html:197
 msgid "About"
-msgstr "Oколо"
+msgstr "О нас"
 
 #: templates/bases/basic.html:40 templates/bases/basic.html:195
 msgid "Contact"
-msgstr "Контакт"
+msgstr "Контакты"
 
 #: templates/bases/basic.html:41
 msgid "Help"
@@ -86,7 +70,7 @@ msgstr "Помощь"
 
 #: templates/bases/basic.html:57
 msgid "Log out"
-msgstr "выйти"
+msgstr "Выйти"
 
 #: templates/bases/basic.html:61
 msgid "Sign in"
@@ -98,23 +82,205 @@ msgstr "Зарегистрироваться"
 
 #: templates/bases/basic.html:128
 msgid "Search for products"
-msgstr "Поискa"
+msgstr "Поиск товаров"
 
-#: templates/bases/basic.html:151
+#: templates/bases/basic.html:139
+msgid "Customer Service"
+msgstr "Служба поддержки"
+
+#: templates/bases/basic.html:151 templates/index.html:117
 msgid "Categories"
 msgstr "Категории"
 
-#: templates/bases/basic.html:191
+#: templates/bases/basic.html:191 templates/bases/basic.html:244
+#: templates/bases/basic.html:254
 msgid "Home"
-msgstr "Основной"
+msgstr "Главная"
 
 #: templates/bases/basic.html:193
-msgid "Shop"
-msgstr "Магазин"
+msgid "Apartment"
+msgstr "Квартира"
+
+#: templates/bases/basic.html:227
+msgid "Get In Touch"
+msgstr "Свяжитесь с нами"
+
+#: templates/bases/basic.html:242
+msgid "Quick Apartment"
+msgstr "Быстрые квартиры"
+
+#: templates/bases/basic.html:245 templates/bases/basic.html:255
+msgid "Our Apartment"
+msgstr "Наши квартиры"
+
+#: templates/bases/basic.html:246 templates/bases/basic.html:257
+msgid "Apartment Cart"
+msgstr "Корзина квартир"
+
+#: templates/bases/basic.html:247 templates/bases/basic.html:258
+msgid "Checkout"
+msgstr "Оформление заказа"
+
+#: templates/bases/basic.html:248 templates/bases/basic.html:259
+#: templates/contact.html:8
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
+
+#: templates/bases/basic.html:252
+msgid "My Account"
+msgstr "Мой аккаунт"
+
+#: templates/bases/basic.html:256
+msgid "Apartment Detail"
+msgstr "Детали квартиры"
 
 #: templates/bases/basic.html:263
-msgid "Введите свой адрес электронной почты, если вы хотите получать уведомления о новых продуктах на сайте"
+msgid "Newsletter"
+msgstr "Рассылка"
+
+#: templates/bases/basic.html:264
+msgid ""
+"Enter your email address If you want to be notified about new products on "
+"the site"
 msgstr ""
+"Введите ваш адрес электронной почты, если хотите получать уведомления о "
+"новых товарах на сайте"
+
+#: templates/bases/basic.html:268
+msgid "Your Email Address"
+msgstr "Ваш адрес электронной почты"
+
+#: templates/bases/basic.html:270
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: templates/contact.html:23
+msgid "Your Name"
+msgstr "Ваше имя"
+
+#: templates/contact.html:29
+#, fuzzy
+#| msgid "Your Email Address"
+msgid "Your Email"
+msgstr "Ваш адрес электронной почты"
+
+#: templates/contact.html:38
+msgid "Subject"
+msgstr "Тема"
+
+#: templates/contact.html:43
+msgid "Message"
+msgstr "Сообщение"
+
+#: templates/contact.html:50
+msgid "Send Message"
+msgstr "Отправить сообщение"
+
+#: templates/contact.html:64
+msgid "Tashkent shahar Mirza Ulugbek tumani Davron kochasi 12 A uy "
+msgstr "Город Ташкент, Мирабадский район, улица Даврон, дом 12А"
+
+#: templates/index.html:24
+msgid "Featured Apartments"
+msgstr "Избранные квартиры"
+
+#: templates/index.html:27
+msgid "Discover our premium selection of apartments tailored to your needs."
+msgstr ""
+"Откройте для себя наш премиальный выбор квартир, подобранных под ваши "
+"потребности."
+
+#: templates/index.html:31
+msgid "Browse Apartments"
+msgstr "Просмотреть квартиры"
+
+#: templates/index.html:43
+msgid "Modern Living Spaces"
+msgstr "Современные жилые помещения"
+
+#: templates/index.html:46
+msgid ""
+"Experience comfort and style with our fully-furnished modern apartments."
+msgstr ""
+"Почувствуйте комфорт и стиль в наших полностью меблированных современных "
+"квартирах."
+
+#: templates/index.html:49 templates/index.html:66 templates/index.html:81
+#: templates/index.html:89
+msgid "Get Apartment Now"
+msgstr "Получить квартиру сейчас"
+
+#: templates/index.html:60
+msgid "Family-Friendly Apartments"
+msgstr "Квартиры для семей"
+
+#: templates/index.html:63
+msgid ""
+"Find the perfect space for your family with our safe and spacious apartments."
+msgstr ""
+"Найдите идеальное жильё для вашей семьи в наших безопасных и просторных "
+"квартирах."
+
+#: templates/index.html:79 templates/index.html:87
+#, python-format
+msgid "Save 20%%"
+msgstr "Сэкономьте 20%%"
+
+#: templates/index.html:80 templates/index.html:88
+msgid "Special Offer"
+msgstr "Специальное предложение"
+
+#: templates/index.html:100
+msgid "OUR SERVICES"
+msgstr "НАШИ УСЛУГИ"
+
+#: templates/index.html:265
+msgid "OUR MANUFACTURES"
+msgstr "НАШИ ПАРТНЁРЫ"
+
+#: templates/shop.html:34
+msgid "Purge"
+msgstr "Очистить"
+
+#: templates/shop.html:44
+msgid "Sorting Options"
+msgstr "Параметры сортировки"
+
+#: templates/shop.html:49
+msgid "Select Sorting Criteria"
+msgstr "Выберите критерий сортировки"
+
+#: templates/shop.html:54
+msgid "By Date"
+msgstr "По дате"
+
+#: templates/shop.html:58
+msgid "By Rating"
+msgstr "По рейтингу"
+
+#: templates/shop.html:62
+msgid "By Views"
+msgstr "По просмотрам"
+
+#: templates/shop.html:64
+msgid "Most Viewed"
+msgstr "Самые просматриваемые"
+
+#: templates/shop.html:71
+msgid "Filter by Price"
+msgstr "Фильтр по цене"
+
+#: templates/shop.html:73
+msgid "From"
+msgstr "От"
+
+#: templates/shop.html:74
+msgid "To"
+msgstr "До"
+
+#: templates/shop.html:80
+msgid "Apply Filters"
+msgstr "Применить фильтры"
 
 #: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:434
 msgid "open('foo"
@@ -182,6 +348,284 @@ msgstr ""
 #: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1657
 msgid "--"
 msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/_termui_impl.py:556
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/_termui_impl.py:560
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1124
+msgid "Aborted!"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1349
+#: venv/lib/python3.10/site-packages/click/core.py:1379
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1396
+msgid "Options"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1422
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1438
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1645
+msgid "Commands"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1677
+msgid "Missing command."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:1755
+msgid "No such command {name!r}."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2313
+msgid "Value must be an iterable."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2334
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2783
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2813
+msgid "(dynamic)"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2828
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/core.py:2841
+msgid "required"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/decorators.py:457
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/decorators.py:520
+msgid "Show the version and exit."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/decorators.py:541
+msgid "Show this message and exit."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:49
+#: venv/lib/python3.10/site-packages/click/exceptions.py:88
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:80
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:129
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:131
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:187
+msgid "Missing argument"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:189
+msgid "Missing option"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:191
+msgid "Missing parameter"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:193
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:200
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:220
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:232
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:270
+msgid "unknown error"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/exceptions.py:277
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/parser.py:233
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/parser.py:415
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/parser.py:476
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:158
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:174
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:176
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:187
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:243
+msgid "Error: invalid input"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/termui.py:773
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:267
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:299
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:393
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:415
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:471
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:612
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:636
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:826
+msgid "file"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:828
+msgid "directory"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:830
+msgid "path"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:881
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:890
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:898
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:907
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:916
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:925
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/click/types.py:992
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
 
 #: venv/lib/python3.10/site-packages/django/contrib/messages/apps.py:16
 msgid "Messages"
@@ -1415,9 +1859,21 @@ msgstr ""
 msgid "Check the correct settings.CKEDITOR_5_CONFIGS "
 msgstr ""
 
+#: venv/lib/python3.10/site-packages/kombu/transport/qpid.py:1311
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/kombu/transport/qpid.py:1316
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/kombu/transport/qpid.py:1334
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
 #: venv/lib/python3.10/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
-
-#~ msgid "Pages"
-#~ msgstr "Страницы"

@@ -5,8 +5,8 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /code
 
-# netcat o'rnatiladi
-RUN apt-get update && apt-get install -y netcat-openbsd && apt-get clean
+# netcat va gettext o'rnatiladi
+RUN apt-get update && apt-get install -y netcat-openbsd gettext && apt-get clean
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

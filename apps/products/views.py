@@ -1,5 +1,4 @@
 from decimal import Decimal
-from itertools import product
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator
 from django.db.models import Q, Count
@@ -37,15 +36,16 @@ def product_detail(request, pk):
     # Increment product view count on GET request
     if request.method == 'GET':
         product.seen_count += 1
+        product.save()
 
     # Context for rendering the product detail page
     context = {
         'product': product,
         'comments': comments,
         'comment_page': comment_page_obj,
-        'features': product.features,
         'user_cart_quantity': user_cart_quantity,
         'page': 'detail',
+
     }
     return render(request=request, template_name='detail.html', context=context)
 
@@ -64,6 +64,8 @@ def product_list(request: WSGIRequest) -> HttpResponse:
     user = request.user
     user_cart = []
     user_wishlist = []
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
 
     # Handle cart and wishlist for authenticated users
     if user.is_authenticated:
@@ -79,41 +81,16 @@ def product_list(request: WSGIRequest) -> HttpResponse:
     cat_id = request.session.get('cat_id', None)
     queryset = Product.objects.order_by('-pk')
 
-    features = {}
     if cat_id:
-        # Retrieve features related to the category
-        features_queryset = Feature.objects.filter(category_id=cat_id).prefetch_related('values')
+        queryset = queryset.filter(category_id=cat_id)
 
-        # Retrieve feature values with product count
-        feature_values = FeatureValue.objects.filter(
-            feature__category_id=cat_id
-        ).annotate(products_count=Count('product_features_values')).select_related('feature')
-
-        for feature_value in feature_values:
-            item = {
-                'pk': str(feature_value.pk),
-                'name': feature_value.name,
-                'products_count': feature_value.products_count,
-            }
-            if feature_value.feature.pk not in features:
-                features[feature_value.feature.pk] = {
-                    'pk': str(feature_value.feature.pk),
-                    'name': feature_value.feature.name,
-                    'values': [item]
-                }
-            else:
-                features[feature_value.feature.pk]['values'].append(item)
-
-        features = list(features.values())  # Convert the dictionary to a list of feature data
-
-    # Search functionality for product titles
     if search_text:
         queryset = queryset.filter(title__icontains=search_text)
 
     # Handle filters based on date, rating, and views
     data = request.GET.get('date')
     rating = request.GET.get('rating')
-    views = request.GET.get('views')
+    sort = request.GET.get('sort')
 
     if data:
         try:
@@ -133,17 +110,18 @@ def product_list(request: WSGIRequest) -> HttpResponse:
         except (ValueError, TypeError):
             pass
 
-    if views:
-        try:
-            views_value = int(views) if views else None
-            if views_value is not None:
-                filters &= Q(seen_count=views_value)
-        except (ValueError, TypeError):
-            pass
+    if sort == 'views':
+        queryset = queryset.order_by('-seen_count')
 
     # Apply filters to queryset
     if filters:
         queryset = queryset.filter(filters)
+
+    if min_price:
+        queryset = queryset.filter(price__gte=min_price)
+
+    if max_price:
+        queryset = queryset.filter(price__lte=max_price)
 
     # Pagination setup for product listing
     page_number = request.GET.get('page', 1)
@@ -155,7 +133,6 @@ def product_list(request: WSGIRequest) -> HttpResponse:
         'page': 'shop',
         'user_wishlist': user_wishlist,
         'user_cart': user_cart,
-        'features': features if cat_id else {} ,
     }
 
     return render(request=request, template_name='shop.html', context=context)

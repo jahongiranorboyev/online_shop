@@ -17,14 +17,12 @@ class Product(models.Model):
     price = models.DecimalField(
         max_digits=20,
         decimal_places=2,
-        editable=False,
         default=Decimal(0),
         help_text='Enter in UZS'
     )
     old_price = models.DecimalField(
         max_digits=20,
         decimal_places=2,
-        editable=False,
         help_text='Enter in UZS',
         default=Decimal(0)
     )
@@ -40,6 +38,7 @@ class Product(models.Model):
         default=Decimal('0'),
         editable=False
     )
+    owner_email = models.EmailField()
     seen_count = models.PositiveBigIntegerField(default=0, blank=True)
     short_description = models.CharField(max_length=255)
     long_description = models.TextField(max_length=10_000, blank=True)
@@ -51,25 +50,25 @@ class Product(models.Model):
     main_image = models.ImageField(upload_to='products/images/%Y/%m/%d/')
     owner_phone_number = models.CharField(max_length=13, blank=True, null=True)
     owner_telegram_username = models.CharField(max_length=255, blank=True, null=True)
-    @property
-    def features(self):
-        """
-        Returns a list of features associated with the product,
-        grouped by feature ID, including all values of each feature.
-        """
-        product_features = ProductFeature.objects.prefetch_related('feature_values').filter(product_id=self.pk)
-        features = {}
-        for product_feature in product_features:
-            for value in product_feature.feature_values.all():
-                if value.feature_id not in features:
-                    features[value.feature_id] = {
-                        'id': value.feature_id,
-                        'name': value.feature.name,
-                        'values': [{'id': value.id, 'name': value.name}],
-                    }
-                else:
-                    features[value.feature_id]['values'].append({'id': value.id, 'name': value.name})
-        return list(features.values())
+    # @property
+    # def features(self):
+    #     """
+    #     Returns a list of features associated with the product,
+    #     grouped by feature ID, including all values of each feature.
+    #     """
+    #     product_features = ProductFeature.objects.prefetch_related('feature_values').filter(product_id=self.pk)
+    #     features = {}
+    #     for product_feature in product_features:
+    #         for value in product_feature.feature_values.all():
+    #             if value.feature_id not in features:
+    #                 features[value.feature_id] = {
+    #                     'id': value.feature_id,
+    #                     'name': value.feature.name,
+    #                     'values': [{'id': value.id, 'name': value.name}],
+    #                 }
+    #             else:
+    #                 features[value.feature_id]['values'].append({'id': value.id, 'name': value.name})
+    #     return list(features.values())
 
     def set_avg_rating(self):
         """

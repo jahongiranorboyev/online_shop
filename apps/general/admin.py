@@ -1,10 +1,10 @@
 from django.contrib import admin
-
+from modeltranslation.admin import TranslationAdmin
 from apps.general.models import General, PaymentMethod
 
 
 @admin.register(General)
-class GeneralAdmin(admin.ModelAdmin):
+class GeneralAdmin(TranslationAdmin):
     def has_add_permission(self, request):
         return not General.objects.exists()
 
