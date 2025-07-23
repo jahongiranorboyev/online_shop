@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'uz'
 
 LOCALE_PATHS = [
     settings.BASE_DIR / 'translation',
@@ -9,7 +9,7 @@ LOCALE_PATHS = [
 
 USE_I18N = True
 
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 
 LANGUAGES = (
     ('uz', _('Uzbek')),

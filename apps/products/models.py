@@ -38,6 +38,7 @@ class Product(models.Model):
         default=Decimal('0'),
         editable=False
     )
+    owner_room_name = models.CharField(max_length=20)
     owner_email = models.EmailField()
     seen_count = models.PositiveBigIntegerField(default=0, blank=True)
     short_description = models.CharField(max_length=255)

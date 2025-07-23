@@ -60,3 +60,10 @@ def user_register(request):
 
     messages.error(request, obj_register.errors)
     return redirect(settings.LOGIN_REDIRECT_URL)
+
+
+def forgot_password(request):
+    """
+    Renders the forgot password page.
+    """
+    return render(request, 'auth/auth-forgot-password-basic.html')

@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>StudentHome - Online apartment sales</title>
+    <title>CozyPlace - Online apartment sales</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -43,6 +43,15 @@
         </div>
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
+<!--                &lt;!&ndash; VIDEO CALL BUTTON START &ndash;&gt;-->
+<!--                <a href="https://645e-90-156-162-204.ngrok-free.app"-->
+<!--                   title="Video qo‘ng‘iroq"-->
+<!--                   class="btn btn-sm btn-light mr-2 d-flex align-items-center">-->
+<!--                    <span class="mr-1">{% translate 'Video Call' %}</span>-->
+<!--                    <i class="fas fa-video fa-lg"></i>-->
+<!--                </a>-->
+<!--                &lt;!&ndash; VIDEO CALL BUTTON END &ndash;&gt;-->
+
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
                         {% if user.is_authenticated %}
@@ -60,15 +69,13 @@
                             <a href="{% url 'login-page' %}">
                                 <button class="dropdown-item" type="button">{% translate 'Sign in' %}</button>
                             </a>
-
                             <a href="{% url 'register-page' %}">
                                 <button class="dropdown-item" type="button">{% translate 'Sign up' %}</button>
                             </a>
-
                         {% endif %}
-
                     </div>
                 </div>
+
                 <div class="btn-group mx-2">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle"
                             data-toggle="dropdown">{{ currency }}
@@ -81,9 +88,9 @@
                                 </a>
                             {% endif %}
                         {% endfor %}
-
                     </div>
                 </div>
+
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle"
                             data-toggle="dropdown">{{ current_language.upper }}
@@ -100,6 +107,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="d-inline-flex align-items-center d-block d-lg-none">
                 <a href="" class="btn px-0 ml-2">
                     <i class="fas fa-heart text-dark"></i>
@@ -114,11 +122,12 @@
             </div>
         </div>
     </div>
+
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
             <a href="" class="text-decoration-none">
-                <span class="h1 text-uppercase text-primary bg-dark px-2">Student</span>
-                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Home</span>
+                <span class="h1 text-uppercase text-primary bg-dark px-2">SHinam</span>
+                <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Makon</span>
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
@@ -135,12 +144,14 @@
                 </div>
             </form>
         </div>
+
         <div class="col-lg-4 col-6 text-right">
             <p class="m-0">{% translate 'Customer Service' %}</p>
-            <h5 class="m-0">+998930987898</h5>
+            <h5 class="m-0">+998930495264</h5>
         </div>
     </div>
 </div>
+
 <!-- Topbar End -->
 <!-- Navbar Start -->
 <div class="container-fluid bg-dark mb-30">
@@ -179,8 +190,8 @@
         <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                 <a href="" class="text-decoration-none d-block d-lg-none">
-                    <span class="h1 text-uppercase text-dark bg-light px-2">Student</span>
-                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Home</span>
+                    <span class="h1 text-uppercase text-dark bg-light px-2">Shinam</span>
+                    <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Makon</span>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
