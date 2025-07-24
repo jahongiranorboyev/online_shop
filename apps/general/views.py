@@ -39,22 +39,24 @@ def cart(request):
 def set_language(request, lang):
     """
     Sets the language for the user and redirects back to the previous page.
-
-    Args:
-        request (HttpRequest): The request object.
-        lang (str): The language code to activate (e.g., 'en', 'fr').
-
-    Returns:
-        HttpResponseRedirect: The redirect response to the previous page with the selected language.
     """
     if lang not in settings.MODELTRANSLATION_LANGUAGES:
         lang = settings.LANGUAGE_CODE
     activate(lang)
 
+    referer = request.META.get('HTTP_REFERER', '/')
     host = request.build_absolute_uri('/')
-    redirect_to = host + lang + request.META['HTTP_REFERER'].replace(host, '')[2:]
+
+    # Safely replace the current language prefix with the new one
+    for code in settings.MODELTRANSLATION_LANGUAGES:
+        if f'/{code}/' in referer:
+            redirect_to = referer.replace(f'/{code}/', f'/{lang}/')
+            break
+    else:
+        redirect_to = f"/{lang}/"
 
     return redirect(redirect_to)
+
 
 
 def set_currency(request, currency: str):
