@@ -17,8 +17,7 @@ from apps.general.views import (
     clear_session,
 )
 
-
-# --- SITEMAP ---
+# --- SITEMAPS ---
 class StaticViewSitemap(Sitemap):
     changefreq = "monthly"
     priority = 1.0
@@ -27,17 +26,21 @@ class StaticViewSitemap(Sitemap):
         return [
             'home-page',
             'search',
-            'about-page',
-            'contact-page',
-            'wishlist',
-            'cart-page',
-            'category',
+            'about:about-page',
+            'contacts:contact-page',
+            'wishlists:wishlist',
+            'carts:cart-page',
+            'categories:category',
             'clear_session',
             '404-page',
         ]
 
     def location(self, item):
-        return reverse(item)
+        try:
+            return reverse(item)
+        except:
+            # Log or handle the error properly in production
+            return "/"
 
 
 class ProductSitemap(Sitemap):
@@ -55,7 +58,6 @@ sitemaps = {
     'static': StaticViewSitemap,
     'products': ProductSitemap,
 }
-
 
 # --- ROBOTS.TXT ---
 def robots_txt(request):
@@ -98,7 +100,7 @@ urlpatterns += i18n_patterns(
     path('404/', page_404, name='404-page'),
 )
 
-# --- Static & media fayllar ---
+# --- Media va Static fayllar ---
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
