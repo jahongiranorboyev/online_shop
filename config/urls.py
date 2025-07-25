@@ -1,9 +1,13 @@
 from django.contrib import admin
 from django.conf import settings
-from django.urls import path, include
+from django.urls import path, include, reverse
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import Sitemap
+from django.http import HttpResponse
 
+from apps.products.models import Product
 from apps.general.views import (
     set_language,
     home,
@@ -13,14 +17,66 @@ from apps.general.views import (
     clear_session,
 )
 
-# No-i18n routes (tilsiz URLlar)
+
+# --- SITEMAP ---
+class StaticViewSitemap(Sitemap):
+    changefreq = "monthly"
+    priority = 1.0
+
+    def items(self):
+        return [
+            'home-page',
+            'search',
+            'about-page',
+            'contact-page',
+            'wishlist',
+            'cart-page',
+            'category',
+            'clear_session',
+            '404-page',
+        ]
+
+    def location(self, item):
+        return reverse(item)
+
+
+class ProductSitemap(Sitemap):
+    changefreq = "weekly"
+    priority = 0.8
+
+    def items(self):
+        return Product.objects.all()
+
+    def location(self, obj):
+        return reverse('products:detail-page', kwargs={'pk': obj.pk})
+
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'products': ProductSitemap,
+}
+
+
+# --- ROBOTS.TXT ---
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow:",
+        "Sitemap: https://shinam-makon.uz/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+# --- No-i18n routes ---
 urlpatterns = [
+    path("sitemap.xml", sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path("robots.txt", robots_txt),
     path("__ckeditor5/", include('django_ckeditor_5.urls')),
     path('set-language/<str:lang>/', set_language, name='set-lang'),
     path('set-currency/<str:currency>/', set_currency, name='set-currency'),
 ]
 
-# i18n URLlar (masalan, /en/, /uz/ bilan)
+# --- i18n routes ---
 urlpatterns += i18n_patterns(
     path('', home, name='home-page'),
     path('admin/', admin.site.urls),
@@ -42,7 +98,7 @@ urlpatterns += i18n_patterns(
     path('404/', page_404, name='404-page'),
 )
 
-# Static & media fayllar faqat debug rejimda ko‘rsatiladi
+# --- Static & media fayllar ---
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
