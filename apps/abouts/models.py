@@ -14,7 +14,7 @@ class About(models.Model):
 
     title = models.CharField(max_length=155, help_text="Title of the about section (max 155 characters).")
     description = models.TextField(
-        max_length=255,
+        max_length=1000,
         blank=True,
         help_text="Optional short description (max 255 characters)."
     )
