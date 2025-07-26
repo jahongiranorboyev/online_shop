@@ -20,7 +20,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["shinam-makon.uz", "www.shinam-makon.uz", "127.0.0.1", "localhost"]
 INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
@@ -128,3 +128,11 @@ LOGIN_REDIRECT_URL = 'home-page'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://shinam-makon.uz",
+    "https://www.shinam-makon.uz",
+]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
