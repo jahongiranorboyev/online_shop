@@ -12,9 +12,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), {% static 'about ing/about-img-1.png' %};">
-                        <h5 class="section-about-title pe-3">{% translate 'About Us' %}</h5>
                         <h1 class="mb-4">{% translate 'Welcome to' %} <span class="text-primary">{{ about.title }}</span></h1>
-                        <p class="mb-4">{{ about.description|safe  }}</p>
+                        <p class="mb-4">{{ about.description  }}</p>
 
                         <div class="row gy-2 gx-4 mb-4">
 {#                        {% for foo in social_media %}#}
@@ -23,8 +22,6 @@
                             </div>
 {#                        {% endfor %}#}
                         </div>
-
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">{% translate 'Read More' %}</a>
                     </div>
                 </div>
             </div>
