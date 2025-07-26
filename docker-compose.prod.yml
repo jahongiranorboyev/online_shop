@@ -7,6 +7,7 @@ services:
     command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/code/static
+      - staticfiles_volume:/code/staticfiles
       - media_volume:/code/media
     env_file:
       - .env
@@ -90,6 +91,7 @@ services:
     volumes:
       - ./deploy/nginx:/etc/nginx/conf.d
       - static_volume:/code/static
+      - staticfiles_volume:/code/staticfiles
       - media_volume:/code/media
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -111,6 +113,7 @@ services:
 volumes:
   postgres_data:
   static_volume:
+  staticfiles_volume:
   media_volume:
   certbot-etc:
   certbot-var:
